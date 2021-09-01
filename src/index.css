@@ -106,3 +106,13 @@ main .choise-wrapper {
   z-index: 1;
   transition: width 1s;
 }
+
+
+
+.center_all{
+  display: grid;
+  place-items: center;
+}
+.center_all h2{
+  margin-top: 20px;
+}

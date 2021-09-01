@@ -1,9 +1,10 @@
 
 const ProgressBars = ({correctAnswers, wrongAnswers, numOfQtns, qtnNum}) => {
+    console.log(" VARS ", ({correctAnswers, wrongAnswers, numOfQtns, qtnNum}));
     return (
          <>
             <div className="question-progress">
-                <div className="qtn-pg-bar" style={{width: `${Math.floor(qtnNum * 100/numOfQtns)}%`}} ></div>
+                <div className="qtn-pg-bar" style={{width: `${Math.min(100, Math.floor(qtnNum * 100/numOfQtns))}%`}} ></div>
             </div>
             
             
