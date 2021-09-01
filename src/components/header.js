@@ -1,12 +1,12 @@
-const Header  = () => {
+const Header  = ({numOfQtns, qtnNum, qtnCategory, qtnDifficulty}) => {
     return (
         <header>
             <div className="header-wrapper">
-                <h1>Question {0} of {20}</h1>
-                <p>Entertainment: Board Games</p>
-                <span className={`fa fa-star${"-o"}`}></span>&nbsp;
-                <span className={`fa fa-star${"-o"}`}></span>&nbsp;
-                <span className={`fa fa-star${"-o"}`}></span>
+                <h1>Question {qtnNum} of {numOfQtns}</h1>
+                <p>{decodeURIComponent(qtnCategory)}</p>
+                <span className="fa fa-star"></span>&nbsp;
+                <span className={`fa fa-star${qtnDifficulty === "easy"? "-o": ""}`}></span>&nbsp;
+                <span className={`fa fa-star${qtnDifficulty === "hard"? "": "-o"}`}></span>
             </div>
         </header>
     )

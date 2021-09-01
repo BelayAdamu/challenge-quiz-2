@@ -4,7 +4,7 @@ const Next = ({answeredCorrect, nextQuestion}) => {{}
     return ( 
         <>
         <h2>{answeredCorrect? "Correct!": "Sorry!"}</h2>
-        <button className="btn-next" onClick={nextQuestion}>Next Question</button>
+        <button className="btn-next" onClick={() => nextQuestion(answeredCorrect)}>Next Question</button>
         </>
     );
 }

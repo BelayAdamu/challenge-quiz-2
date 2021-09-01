@@ -67,10 +67,12 @@ main .choise-wrapper {
   height: 20px;
   top: 0px;
   left: 0px;
+  
 }
 .qtn-pg-bar {
   background-color: gray;
   height: 100%;
+  transition: width 1s;
 }
 .scores-bar {
   position: relative;
@@ -86,6 +88,7 @@ main .choise-wrapper {
   height: 100%;
   background-color: black;
   z-index: 3;
+  transition: width 1s;
 }
 .actual-score {
   position: absolute;
@@ -93,6 +96,7 @@ main .choise-wrapper {
   height: 100%;
   background-color: gray;
   z-index: 2;
+  transition: width 1s;
 }
 .highest-possible-score {
   position: absolute;
@@ -100,4 +104,5 @@ main .choise-wrapper {
   height: 100%;
   background-color: rgb(207, 202, 202);
   z-index: 1;
+  transition: width 1s;
 }
