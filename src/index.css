@@ -11,15 +11,12 @@ body {
 }
 #root {
   position: relative;
-  width: 35%;
+  width: 480px;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
   padding: 50px 50px 10px 50px;
   border: 1px solid black;
-}
-header {
-  
 }
 main {
   padding-top: 40px;
