@@ -6,49 +6,57 @@ import ProgressBars from "./components/progressBars";
 import _questions from "./questions";
 
 function App() {
+  const questions = _questions; //1
 
-  const questions = _questions;
-
-  const [currentQtn, setCurrentQtn] = useState(0);
+  const [currentQtnNo, setCurrentQtn] = useState(0); //currentQtnNo
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
 
-  const nextQuestion = () => {
-    
-    setCurrentQtn(currentQtn + 1);
-    
-  }
-  
   const qtnAnswered = (answeredCorrect) => {
-    
-    if (!answeredCorrect) {
-      console.log(answeredCorrect);
-      setWrongAnswers(wrongAnswers + 1);
-    } else {
-      setCorrectAnswers(correctAnswers + 1)
-    }
-    
-  }
+    //updateScore
+    answeredCorrect
+      ? setCorrectAnswers(correctAnswers + 1)
+      : setWrongAnswers(wrongAnswers + 1);
+  };
 
   return (
     <>
-      {(currentQtn < questions.length) && <Header
-        numOfQtns={questions.length}
-        qtnNum={currentQtn + 1}
-        qtnCategory={questions[currentQtn].category}
-        qtnDifficulty={questions[currentQtn].difficulty} />}
+      {currentQtnNo < questions.length && (
+        <Header
+          numOfQtns={questions.length}
+          qtnNum={currentQtnNo + 1}
+          qtnCategory={questions[currentQtnNo].category}
+          qtnDifficulty={questions[currentQtnNo].difficulty}
+        />
+      )}
 
+      {currentQtnNo < questions.length && (
+        <Question
+          currentQuestion={questions[currentQtnNo]}
+          currentQtnNo = {currentQtnNo}
+          nextQuestion={()=> setCurrentQtn(currentQtnNo + 1)}
+          qtnAnswered={qtnAnswered}
+        />
+      )}
+      
       {
-        (currentQtn === questions.length) && <div className="center_all">
-          <h1>Completed</h1>
-          <h2>Score {Math.floor((correctAnswers * 100) / questions.length)}%</h2>
-        </div>
+        //TODO: update the css
+        currentQtnNo === questions.length && (
+          <div className="center_all">
+            <h1>Completed</h1>
+            <h2>
+              Score {Math.floor((correctAnswers * 100) / questions.length)}%
+            </h2>
+          </div>
+        )
       }
 
-      {(currentQtn < questions.length) && <Question currentQuestion={questions[currentQtn]} nextQuestion={nextQuestion} qtnAnswered = {qtnAnswered}/>}
-      
-      <ProgressBars wrongAnswers={wrongAnswers} numOfQtns={questions.length}
-        qtnNum={currentQtn + 1} correctAnswers={correctAnswers} />
+      <ProgressBars
+        wrongAnswers={wrongAnswers}
+        correctAnswers={correctAnswers}
+        numOfQtns={questions.length}
+        qtnNum={currentQtnNo + 1}
+      />
     </>
   );
 }
