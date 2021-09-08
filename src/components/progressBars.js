@@ -20,7 +20,7 @@ const ProgressBars = ({correctAnswers, wrongAnswers, numOfQtns, qtnNum}) => {
                 </div>
                 <div className="scores-bar">
                     <div className="lowest-possible-score" style={{width: `${Math.floor(correctAnswers*100/numOfQtns).toString()}%`}}></div>
-                    <div className="actual-score" style={{width: `${qtnNum === 1? Math.floor(correctAnswers*100/1).toString(): Math.floor(correctAnswers*100/(qtnNum - 1)).toString()}%` }}></div>
+                    <div className="actual-score" style={{width: `${(qtnNum > wrongAnswers + correctAnswers)? Math.floor(correctAnswers*100/(qtnNum - 1)).toString(): Math.floor(correctAnswers*100/(qtnNum)).toString()}%` }}></div>
                     <div className="highest-possible-score" style={{width: `${Math.floor((numOfQtns - wrongAnswers)*100/numOfQtns).toString()}%`}}></div>
                 </div>
             </div>
