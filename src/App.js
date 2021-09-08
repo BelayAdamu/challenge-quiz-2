@@ -13,32 +13,23 @@ function App() {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
 
-  const nextQuestion = (answeredCorrect) => {
-    console.log("Question answered");
-
-    // if (currentQtn < questions.length) {
-
+  const nextQuestion = () => {
+    
     setCurrentQtn(currentQtn + 1);
-
+    
+  }
+  
+  const qtnAnswered = (answeredCorrect) => {
+    
     if (!answeredCorrect) {
       console.log(answeredCorrect);
       setWrongAnswers(wrongAnswers + 1);
     } else {
       setCorrectAnswers(correctAnswers + 1)
     }
-
-    // }
-    // else {
-    //   setCurrentQtn(0)
-    //   setCorrectAnswers(0);
-    //   setWrongAnswers(0);
-    // };
-
-
+    
   }
 
-  console.log(wrongAnswers)
-  console.log("correct answer: ", correctAnswers)
   return (
     <>
       {(currentQtn < questions.length) && <Header
@@ -54,7 +45,8 @@ function App() {
         </div>
       }
 
-      {(currentQtn < questions.length) && <Question currentQuestion={questions[currentQtn]} nextQuestion={nextQuestion} />}
+      {(currentQtn < questions.length) && <Question currentQuestion={questions[currentQtn]} nextQuestion={nextQuestion} qtnAnswered = {qtnAnswered}/>}
+      
       <ProgressBars wrongAnswers={wrongAnswers} numOfQtns={questions.length}
         qtnNum={currentQtn + 1} correctAnswers={correctAnswers} />
     </>
