@@ -1,19 +1,17 @@
 import { useState } from "react";
 
-import Header from "./components/header";
-import Question from "./components/question";
-import ProgressBars from "./components/progressBars";
-import _questions from "./questions";
+import Header from "./components/Header";
+import Question from "./components/Question";
+import ScoreBars from "./components/ScoreBars";
+import ProgressBar from "./components/ProgressBar";
+import questions from "./questions";
 
 function App() {
-  const questions = _questions; //1
-
-  const [currentQtnNo, setCurrentQtn] = useState(0); //currentQtnNo
+  const [currentQtnNo, setCurrentQtn] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
 
   const qtnAnswered = (answeredCorrect) => {
-    //updateScore
     answeredCorrect
       ? setCorrectAnswers(correctAnswers + 1)
       : setWrongAnswers(wrongAnswers + 1);
@@ -33,25 +31,22 @@ function App() {
       {currentQtnNo < questions.length && (
         <Question
           currentQuestion={questions[currentQtnNo]}
-          currentQtnNo = {currentQtnNo}
-          nextQuestion={()=> setCurrentQtn(currentQtnNo + 1)}
+          currentQtnNo={currentQtnNo}
+          nextQuestion={() => setCurrentQtn(currentQtnNo + 1)}
           qtnAnswered={qtnAnswered}
         />
       )}
-      
-      {
-        //TODO: update the css
-        currentQtnNo === questions.length && (
-          <div className="center_all">
-            <h1>Completed</h1>
-            <h2>
-              Score {Math.floor((correctAnswers * 100) / questions.length)}%
-            </h2>
-          </div>
-        )
-      }
 
-      <ProgressBars
+      {currentQtnNo === questions.length && (
+        <div className="center_all">
+          <h1>Completed</h1>
+          <h2>
+            Score {Math.floor((correctAnswers * 100) / questions.length)}%
+          </h2>
+        </div>
+      )}
+      <ProgressBar numOfQtns={questions.length} qtnNum={currentQtnNo + 1} />
+      <ScoreBars
         wrongAnswers={wrongAnswers}
         correctAnswers={correctAnswers}
         numOfQtns={questions.length}

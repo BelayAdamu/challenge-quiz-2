@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Next from "./nextQuestion";
+import Next from "./NextQuestion";
 import ChoiceButton from "./ChoiseButton";
 
 const Question = ({
@@ -12,12 +12,15 @@ const Question = ({
   const [answeredCorrect, setAnsweredCorrect] = useState(false);
   const [choices, setChoices] = useState([]);
   const [btnDisabled, setBtnDisabled] = useState(false);
-  const [aBtnWasClicked, setABtnWasClicked] = useState(false);
-
   useEffect(() => {
-    if (currentQuestion.type === "boolean") {
-      setChoices(["True", "False"]);
-    } else {
+    // 1. construct choices based on question type.
+
+    // 2. randomize multiple choises
+
+    // 3. reset componenet states
+
+    if (currentQuestion.type === "boolean") setChoices(["True", "False"]);
+    else {
       let _choices;
       _choices = currentQuestion.incorrect_answers.map((current) =>
         decodeURIComponent(current)
@@ -35,18 +38,21 @@ const Question = ({
     setBtnDisabled(false);
     setShowNextButton(false);
     setAnsweredCorrect(false);
-    setABtnWasClicked(false);
   }, [currentQuestion]);
 
   function handleChoiceBtnClick(e) {
+    // 1. disable all choises
+
+    // 2. display Next question button
+
+    // 3. Update score
+
     setBtnDisabled(true);
     setShowNextButton(!showNextButton);
     if (e.target.value === decodeURIComponent(currentQuestion.correct_answer)) {
       setAnsweredCorrect(true);
       qtnAnswered(true);
-    } else {
-      qtnAnswered(false);
-    }
+    } else qtnAnswered(false);
   }
 
   return (

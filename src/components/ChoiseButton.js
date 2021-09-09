@@ -1,18 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-function ChoiceButton({
-  choice,
-  i,
-  disabled,
-  handleClick,
-  correctAnswer,
-}) {
+function ChoiceButton({ choice, i, disabled, handleClick, correctAnswer }) {
   const [thisBtnWasClicked, setThisBtnWasClicked] = useState(false);
-
-  // This makes sure that thisBtnWasClicked is false at every re-render
-  useEffect(() => {
-    setThisBtnWasClicked(false);
-  }, []);
 
   let btnStyle;
 
