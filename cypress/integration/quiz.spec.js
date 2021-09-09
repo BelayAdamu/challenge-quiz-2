@@ -88,4 +88,11 @@ describe("Quiz app test cases", () => {
         );
       });
   });
+  
+  it("Should mark the correct answer with a green border when incorrect answer is chosen", () => {
+    cy.contains(unescape(questions[0].incorrect_answers[0])).click()
+    cy.contains(unescape(questions[0].correct_answer))
+      .invoke('css', 'border')
+      .should('equal', '3px solid rgb(0, 128, 0)')
+  })
 });

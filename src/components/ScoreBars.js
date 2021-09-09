@@ -1,16 +1,6 @@
 const ScoreBars = ({ correctAnswers, wrongAnswers, numOfQtns, qtnNum }) => {
-  console.log(" VARS ", { correctAnswers, wrongAnswers, numOfQtns, qtnNum });
   return (
     <>
-      {/* <div className="question-progress">
-        <div
-          className="qtn-pg-bar"
-          style={{
-            width: `${Math.min(100, Math.floor((qtnNum * 100) / numOfQtns))}%`,
-          }}
-        ></div>
-      </div> */}
-
       <div className="scores-wrapper">
         <div className="txt-scores-wrapper">
           <div className="txt-actual-score">
@@ -21,7 +11,6 @@ const ScoreBars = ({ correctAnswers, wrongAnswers, numOfQtns, qtnNum }) => {
                 : Math.floor((correctAnswers * 100) / (qtnNum - 1))}
               %
             </p>
-            {console.log("STATUS", correctAnswers, qtnNum)}
           </div>
           <div className="txt-max-score">
             <p>

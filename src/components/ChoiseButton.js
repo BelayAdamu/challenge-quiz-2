@@ -6,7 +6,7 @@ function ChoiceButton({ choice, i, disabled, handleClick, correctAnswer }) {
   let btnStyle;
 
   if (disabled && !thisBtnWasClicked && choice === correctAnswer)
-    btnStyle = { border: "3px solid green", color: "black" };
+    btnStyle = { border: "3px solid rgb(0, 128, 0)", color: "black" };
   else if (disabled && thisBtnWasClicked)
     btnStyle = { backgroundColor: "black", color: "white" };
   else btnStyle = {};
