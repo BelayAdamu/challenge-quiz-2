@@ -8,7 +8,7 @@ const ScoreBars = ({ correctAnswers, wrongAnswers, numOfQtns, qtnNum }) => {
               Score{" "}
               {qtnNum === 1
                 ? Math.floor((correctAnswers * 100) / 1)
-                : Math.floor((correctAnswers * 100) / (qtnNum - 1))}
+                : Math.floor((correctAnswers * 100) / (wrongAnswers + correctAnswers))}
               %
             </p>
           </div>
